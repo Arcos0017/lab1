@@ -250,12 +250,16 @@ void init_opengl(void)
 
 void physics()
 {
+    g.Color3ub(0, 0, 255);	
     g.pos[0] += g.dir;
+    glPushMatrix();	
     if (g.pos[0] >= (g.xres- g.w)) {
+	glColor3ub(255, 0, 0);    
 	g.pos[0] = (g.xres- g.w);
 	g.dir = -g.dir;
     }
     if (g.pos[0] <= g.w) {
+	glColor3ub(255, 0, 0);    
 	g.pos[0] = g.w;
 	g.dir = - g.dir;
     }
@@ -267,7 +271,6 @@ void render()
     glClear(GL_COLOR_BUFFER_BIT);
     //Draw box.
     glPushMatrix();
-    glColor3ub(150, 160, 220);
     glTranslatef(g.pos[0], g.pos[1], 0.0f);
     glBegin(GL_QUADS);
     glVertex2f(-g.w, -g.w);
